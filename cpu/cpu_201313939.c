@@ -19,7 +19,7 @@ MODULE_AUTHOR("Mario Enrique Urbina");
 
 static int escribir_archivo(struct seq_file * archivo, void *v) {
     for_each_process(proceso){            
-		seq_printf(archivo, " PID   : \t%d \n", proceso->pid); 
+	seq_printf(archivo, " PID   : \t%d \n", proceso->pid); 
         seq_printf(archivo, " Nombre: \t%s \n", proceso->comm); 
         seq_printf(archivo, " Estado: \t%ld \n", proceso->state);
         seq_printf(archivo, "---------------------------------\n"); 		 

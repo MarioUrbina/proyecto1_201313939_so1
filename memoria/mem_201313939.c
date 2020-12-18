@@ -40,14 +40,14 @@ static struct file_operations operaciones =
 
 static int iniciar(void)
 {
-    proc_create("cpu_201313939", 0, NULL, &operaciones);
+    proc_create("mem_201313939", 0, NULL, &operaciones);
     printk(KERN_INFO "201313939\n");
     return 0;
 }
  
 static void salir(void)
 {
-    remove_proc_entry("cpu_201313939", NULL);
+    remove_proc_entry("mem_201313939", NULL);
     printk(KERN_INFO "Sistemas Operativos 1\n");
 }
  
