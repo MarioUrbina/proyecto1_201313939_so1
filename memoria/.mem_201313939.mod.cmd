@@ -1,0 +1,1 @@
+cmd_/home/mario/Desktop/proyecto1_201313939_so1/memoria/mem_201313939.mod := { echo  /home/mario/Desktop/proyecto1_201313939_so1/memoria/mem_201313939.o; echo; } > /home/mario/Desktop/proyecto1_201313939_so1/memoria/mem_201313939.mod

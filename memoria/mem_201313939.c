@@ -15,7 +15,7 @@ MODULE_AUTHOR("Mario Enrique Urbina");
 
 struct sysinfo inf;
 
-static int escritura_arch(struct seq_file * archivo, void *v){
+static int escribir_archivo(struct seq_file * archivo, void *v){
 	si_meminfo(&inf);
 	long total_mem = (inf.totalram * 4);
 	long mem_libre = (inf.freeram * 4);
@@ -27,26 +27,29 @@ static int escritura_arch(struct seq_file * archivo, void *v){
 	
 }
 
-static int empiezo(struct inode *inode, struct file *file){
-	return single_open(file,escritura_arch, NULL);
+static int al_abrir(struct inode *inode, struct  file *file) {
+  return single_open(file, escribir_archivo, NULL);
 }
 
-static struct file_ope operaciones ={
-	.open = empiezo,
-	.read = seq_read
+static struct file_operations operaciones =
+{        
+    .open = al_abrir,
+    .read = seq_read
 };
 
-static int inicio(void){
-	proc_create("mem_201313939", 0, NULL, &operaciones);
-	printk(KERN_INFO "201313939\n");
-	return 0;  
-}
 
-static void salgo(void){
-	remove_proc_entry("mem_201313939", NULL);
-	printk(KERN_INFO "Sistemas Operativos 1\n");
-		
+static int iniciar(void)
+{
+    proc_create("cpu_201313939", 0, NULL, &operaciones);
+    printk(KERN_INFO "201313939\n");
+    return 0;
 }
-
-module_init(inicio);
-module_exit(salgo);
+ 
+static void salir(void)
+{
+    remove_proc_entry("cpu_201313939", NULL);
+    printk(KERN_INFO "Sistemas Operativos 1\n");
+}
+ 
+module_init(iniciar);
+module_exit(salir); 
