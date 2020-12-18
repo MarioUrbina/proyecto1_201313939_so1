@@ -1,0 +1,29 @@
+Manual de creacion
+
+Para poder crear los modulos se usaron las siguientes dependencias
+#include <linux/proc_fs.h>
+#include <linux/seq_file.h>
+#include <asm/uaccess.h>
+#include <linux/hugetlb.h>
+#include <linux/sched/signal.h>
+#include <linux/sched.h>
+#include <linux/module.h>
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/fs.h>
+
+En el modulo CPU 
+se leen el PID, el nombre y el estado de cada proceso
+
+en el modulo RAM 
+Se lee la memoria que se posee en uso, la que se encuentra libre, y se hace el calculo para el porcentaje de uso de memoria
+
+las instrucciones para hacer el make de los archivos son las siguientes
+make all
+sudo insmod cpu_201313939.ko/ mem_201313939.ko
+sudo rmmod cpu_201313939.ko/ mem_201313939.ko
+dmesg
+cd /proc/
+cat cpu_201313939
+cat mem_201313939.ko
+
